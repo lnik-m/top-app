@@ -1,8 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Htag, Button, Paragraph, Tag } from '../components';
 
 export default function Home(): JSX.Element {
-  const [counter, setCounter] = useState<number>(0);
+  const [counter, setCounter] = useState<number>(1);
+  
+  useEffect ( () => {
+    console.log('Counter is ' + counter);
+  }, [counter]);
 
   return (
     <div>
