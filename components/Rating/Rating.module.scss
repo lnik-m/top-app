@@ -1,0 +1,13 @@
+@import "../../styles/common";
+
+.star svg {
+    margin-right: 5px;
+}
+
+.filled svg {
+    fill: map-get($colors, purp);
+}
+
+.editable {
+    cursor: pointer;
+}
