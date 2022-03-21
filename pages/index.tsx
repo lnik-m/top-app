@@ -1,41 +1,34 @@
+import { GetStaticProps } from 'next';
 import { useEffect, useState } from 'react';
-import { Htag, Button, Paragraph, Tag, Rating } from '../components';
 import { withLayout } from '../layout/Layout';
+import axios from 'axios';
+import { MenuItem } from '../interfaces/menu.interface';
 
-function Home(): JSX.Element {
-  const [counter, setCounter] = useState<number>(1);
-
-  const [rating, setRating] = useState<number>(4);
-  
-  useEffect ( () => {
-    console.log('Counter is ' + counter);
-  }, [counter]);
-
+function Home({ menu }:HomeProps): JSX.Element {
   return (
     <>
-      <Htag tag='h1'>Heading {counter}</Htag>
-      <Htag tag='h2'>Heading 2</Htag>
-      <Htag tag='h3'>Heading 3</Htag>
-
-      <Button appearance='primary' arrow='down' className='hello' onClick={() => setCounter(x => x+1)}>Узнать подробнее</Button>
-      <Button appearance='ghost' arrow='down'>Читать отзывы</Button>
-      <Button appearance='ghost' arrow='right'>Читать отзывы</Button>
-
-      <Paragraph size='s'>small</Paragraph>
-      <Paragraph size='m'>medium</Paragraph>
-      <Paragraph size='b'>big</Paragraph>
-
-      <Tag size='m' color='l-blue'>10</Tag>
-      <Tag size='s' color='ghost'>Photoshop</Tag>
-      <Tag size='m' color='red'>hh.ru</Tag>
-      <Tag size='s' color='primary'>Подготовка макетов</Tag>
-      <Tag size='m' color='green'>-10 000 ₽ </Tag>
-
-      <Rating rating={rating} isEditable setRating={setRating}/>
-      <Rating rating={3} />
-      
+    <ul>
+      {menu.map(m => (<li key={m._id.secondCategory}>{m._id.secondCategory}</li>))}  
+    </ul>
+         
     </>
   );
 }
 
 export default withLayout(Home);
+
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  const firstCategory = 0;
+  const { data: menu} = await axios.post<MenuItem[]>(process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/find', {firstCategory});
+  return {
+    props: {
+      menu,
+      firstCategory
+    }
+  };
+};
+
+interface HomeProps extends Record<string, unknown> {
+  menu: MenuItem[],
+  firstCategory: number
+}
