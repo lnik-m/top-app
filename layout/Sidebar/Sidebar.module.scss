@@ -2,12 +2,14 @@
 
 .sidebar {
     display: grid;
+    align-content: flex-start;
 }
 
 .search {
     display: grid;
     align-items: center;
     justify-content: space-between;
+    
     width: 230px;
     height: 36px;
     margin-top: 20px;
