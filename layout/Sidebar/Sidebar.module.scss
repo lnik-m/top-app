@@ -1,5 +1,36 @@
 @import "../../styles/common";
 
 .sidebar {
+    display: grid;
+}
 
+.search {
+    display: grid;
+    align-items: center;
+    justify-content: space-between;
+    width: 230px;
+    height: 36px;
+    margin-top: 20px;
+    padding: 0 3px 0 15px;
+    color: map-get($colors, menu_col);
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 4px 4px rgb(0 0 0 / 5%);
+    grid-template-columns: 1fr auto;
+    grid-template: "f b";
+
+    .span {
+        grid-area: f;
+    }
+
+    .icon {
+        display: grid;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 5px;
+        background: map-get($colors, purp);
+        grid-area: b;
+        justify-items: center;
+    }
 }
