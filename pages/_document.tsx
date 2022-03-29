@@ -9,7 +9,7 @@ class MyDocument extends Document {
 	render(): JSX.Element {
 		return(
 			<Html lang='ru'>
-				<Head/>
+				<Head />
 				<body>
 					<Main/>
 					<NextScript />

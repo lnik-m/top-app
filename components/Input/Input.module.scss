@@ -1,0 +1,36 @@
+@import '../../styles/common.scss';
+
+.input {
+	padding: 7px 15px;
+
+	color: var(--black);
+	border: none;
+	outline-color: map-get($colors, purp);
+	background: white;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+	border-radius: 5px;
+
+	font-size: 16px;
+	line-height: 22px;
+
+	font-family: "Noto Sans Display", sans-serif;
+}
+
+.input::placeholder {
+	color: #A4A4A4;
+}
+
+.error {
+	border: 1px solid map-get($colors, r);
+}
+
+.inputWrapper {
+	position: relative;
+}
+
+.errorMessage {
+	position: absolute;
+	bottom: -20px;
+	left: 0;
+	color: map-get($colors, r);
+}
