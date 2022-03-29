@@ -1,0 +1,28 @@
+@import "../../styles/common";
+
+.star svg {
+    margin-right: 5px;
+}
+
+.filled svg {
+    fill: map-get($colors, purp);
+}
+
+.editable {
+    cursor: pointer;
+}
+
+.ratingWrapper {
+    position: relative;
+}
+
+.errorMessage {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    color: map-get($colors, r);;
+}
+
+.error svg {
+    stroke: map-get($colors, r);;
+}
